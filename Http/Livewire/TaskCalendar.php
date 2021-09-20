@@ -2,13 +2,12 @@
 
 namespace Modules\TaskCalendarCRM\Http\Livewire;
 
-use App\Actions\Dates\TaskComputeDateStartWithFullCalendarDelta;
-use App\Actions\Dates\ComputedDiffDateInSeconds;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Modules\BaseCore\Actions\Dates\ComputedDiffDateInSeconds;
 use Modules\TaskCalendarCRM\Contracts\Repositories\TaskRepositoryContract;
 
 class TaskCalendar extends Component
@@ -37,7 +36,7 @@ class TaskCalendar extends Component
         $this->emit('TaskChecked');
     }
 
-    public function redirectTask(int $task_id): \Illuminate\Http\RedirectResponse
+    public function redirectTask(int $task_id)
     {
         $taskRep = app(TaskRepositoryContract::class);
         $task = $taskRep->getTaskById($task_id);

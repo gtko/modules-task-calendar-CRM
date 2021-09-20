@@ -2,7 +2,7 @@
     @forelse($tasks as $task)
         <div class="relative" key="{{$task->id}}">
             <div class="event p-3 -mx-3 cursor-pointer transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-1 rounded-md flex items-start">
-                <livewire:task-check-action :task="$task" :key="$task->id.'_checked'"/>
+                <livewire:taskcalendarcrm::task-check-action :task="$task" :key="$task->id.'_checked'"/>
                 <div class="ml-2 pr-10">
                     <div class="event__title truncate">{{ $task->title }}</div>
                     <div class="text-gray-600 text-xs mt-0.5">

@@ -1,16 +1,16 @@
 <?php
 
 namespace Modules\TaskCalendarCRM\Http\Controllers;
-use App\Actions\Dates\ComputedDiffDateInSeconds;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\TaskStoreRequest;
-use App\Http\Requests\TaskUpdateRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Modules\BaseCore\Actions\Dates\ComputedDiffDateInSeconds;
+use Modules\BaseCore\Http\Controllers\Controller;
 use Modules\TaskCalendarCRM\Contracts\Repositories\TaskRepositoryContract;
+use Modules\TaskCalendarCRM\Http\Requests\TaskStoreRequest;
+use Modules\TaskCalendarCRM\Http\Requests\TaskUpdateRequest;
 use Modules\TaskCalendarCRM\Models\Task;
 
 class TasksController extends Controller
@@ -68,7 +68,7 @@ class TasksController extends Controller
 
     public function edit(Task $task): View|Factory|Application
     {
-        return view('taskcalendarcrm::tasks.edit', compact('task'));
+        return view('taskcalendarcrm::edit', compact('task'));
     }
 
     /**

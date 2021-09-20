@@ -11,7 +11,7 @@
                 ><i class="mr-1 icon ion-md-arrow-back"></i
                     ></a>
             </x-slot>
-            <x-corecrm::form
+            <x-basecore::form
                 method="POST"
                 action="{{ route('tasks.store') }}"
                 class="mt-4"
@@ -37,7 +37,7 @@
                         @lang('basecore::crud.common.save')
                     </x-basecore::button>
                 </div>
-            </x-corecrm::form>
+            </x-basecore::form>
         </x-basecore::partials.card>
     </x-basecore::layout.panel-left>
 </x-basecore::app-layout>

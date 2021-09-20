@@ -11,13 +11,13 @@
                 ><i class="mr-1 icon ion-md-arrow-back"></i
                     ></a>
             </x-slot>
-            <x-corecrm::form
+            <x-basecore::form
                 method="PUT"
                 action="{{ route('tasks.update', $task) }}"
                 class="mt-4"
             >
 
-                @include("form")
+                @include("taskcalendarcrm::form")
 
                 <div class="mt-5 flex justify-between items-center">
                     <a href="{{ route('tasks.index') }}" class="button">
@@ -37,7 +37,7 @@
                         @lang('basecore::crud.common.save')
                     </x-basecore::button>
                 </div>
-            </x-corecrm::form>
+            </x-basecore::form>
         </x-basecore::partials.card>
     </x-basecore::layout.panel-left>
 </x-basecore::app-layout>

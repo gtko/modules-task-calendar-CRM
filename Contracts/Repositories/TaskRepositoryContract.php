@@ -5,12 +5,13 @@ namespace Modules\TaskCalendarCRM\Contracts\Repositories;
 
 
 
-use Modules\BaseCore\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
+use Modules\BaseCore\Contracts\Entities\UserEntity;
+use Modules\SearchCRM\Interfaces\SearchableRepository;
 use Modules\TaskCalendarCRM\Models\Task;
 
-interface TaskRepositoryContract
+interface TaskRepositoryContract extends SearchableRepository
 {
     /**
      * @param UserEntity $user
