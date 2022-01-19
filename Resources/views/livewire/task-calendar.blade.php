@@ -8,7 +8,7 @@
 
                 let calendarEl = document.getElementById('calendar');
                 let calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
-                    initialView: 'dayGridMonth',
+                    initialView: 'listWeek',
                     locale: 'fr',
                     events: [
                             @foreach($tasks as $task)
@@ -24,7 +24,7 @@
                     headerToolbar: {
                         left: "prev,next today",
                         center: "title",
-                        right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+                        right: "listWeek,dayGridMonth,timeGridWeek,timeGridDay",
                     },
                     droppable: true,
                     eventDrop: function (info) {
