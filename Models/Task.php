@@ -2,10 +2,10 @@
 namespace Modules\TaskCalendarCRM\Models;
 
 use Modules\BaseCore\Contracts\Entities\UserEntity;
-use Modules\CoreCRM\Icons\Icons;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Modules\BaseCore\Icons\Icons;
 use Modules\SearchCRM\Entities\SearchResult;
 use Modules\SearchCRM\Interfaces\SearchableModel;
 use Modules\BaseCore\Models\User;
