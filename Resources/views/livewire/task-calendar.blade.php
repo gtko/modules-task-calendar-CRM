@@ -8,7 +8,7 @@
 
                 let calendarEl = document.getElementById('calendar');
                 let calendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
-                    initialView: 'listWeek',
+                    initialView: 'timeGridDay',
                     locale: 'fr',
                     events: [
                             @foreach($tasks as $task)
