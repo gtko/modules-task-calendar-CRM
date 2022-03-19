@@ -18,6 +18,7 @@ use Modules\BaseCore\Models\User;
  * @property string $url
  * @property Carbon $start
  * @property Carbon $end
+ * @property string $color
  * @property int $duration
  * @property UserEntity $user
  * @property int $user_id

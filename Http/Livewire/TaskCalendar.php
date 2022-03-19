@@ -36,6 +36,15 @@ class TaskCalendar extends Component
         $this->emit('TaskChecked');
     }
 
+    public function redirectLink(int $task_id){
+        $taskRep = app(TaskRepositoryContract::class);
+        $task = $taskRep->getTaskById($task_id);
+        if($task->url){
+            return redirect($task->url);
+        }
+
+    }
+
     public function redirectTask(int $task_id)
     {
         $taskRep = app(TaskRepositoryContract::class);
