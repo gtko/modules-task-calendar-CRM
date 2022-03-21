@@ -100,7 +100,7 @@
                             show.className = 'cursor-pointer hover:text-blue-200';
                             show.addEventListener('click', function (e) {
                                 @this.
-                                redirectTask(info.event.id)
+                                redirectLink(info.event.id)
                             });
 
                             let arrayOfDomNodes = [checkbox, text, edit, show];
