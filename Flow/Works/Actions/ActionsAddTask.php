@@ -20,13 +20,14 @@ class ActionsAddTask extends WorkFlowAction
     public function handle()
     {
         $data = $this->event->getData();
-        $commercial = $data['commercial'];
+        $commercial = $data['user'];
 
         $parseVariable = new WorkFlowParseVariable($this->event, $this->params[0]->getValue());
         $config = $parseVariable->resolve();
 
+        $url  = route('dossiers.show', [$data['dossier']->client, $data['dossier']]);
         $rep = app(TaskRepositoryContract::class);
-        $task = $rep->createTask($commercial,now()->addHours($config['hours']), $config['title']);
+        $task = $rep->createTask($commercial,now()->addHours($config['hours']), $config['title'],$url);
     }
 
     public function isVariabled(): bool
