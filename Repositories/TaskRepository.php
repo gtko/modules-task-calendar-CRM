@@ -120,13 +120,17 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
 
     public function checkTaskByTaskable(UserEntity $user, $taskable)
     {
-        $tasks = $this->newQuery()->whereHasMorph(
+        $tasks = $this->newQuery()
+            ->whereHasMorph(
             'taskable',
             [$taskable::class],
             function (Builder $query) use ($taskable) {
                 $query->where('taskable_id', $taskable->id);
             }
-        )->get();
+            )
+            ->where('user_id', $user->id)
+            ->get();
+
 
         foreach($tasks as $task) {
             $task->checked = true;
