@@ -20,6 +20,11 @@
                             @if($task->color)
                                 color: "{{$task->color}}",
                             @endif
+                            extendedProps: {
+                                @if($task->taskable_type)
+                                    actions: {!! json_encode($task->taskable->actions()) !!}
+                                @endif
+                            }
                         },
                         @endforeach
                     ],
@@ -54,10 +59,6 @@
                         {{--}--}}
                     },
                     eventContent: function (info) {
-
-                        console.log(info)
-
-
                             let checkbox = document.createElement('input');
                             checkbox.type = "checkbox";
                             checkbox.name = "name";

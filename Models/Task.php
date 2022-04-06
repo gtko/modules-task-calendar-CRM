@@ -1,6 +1,7 @@
 <?php
 namespace Modules\TaskCalendarCRM\Models;
 
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Modules\BaseCore\Contracts\Entities\UserEntity;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -40,6 +41,11 @@ class Task extends Model implements SearchableModel
     public function user(): BelongsTo
     {
         return $this->belongsTo(app(UserEntity::class)::class);
+    }
+
+    public function taskable() : MorphTo
+    {
+        return $this->morphTo('taskable', 'taskable_type', 'taskable_id');
     }
 
     public function getEndAttribute():Carbon|null

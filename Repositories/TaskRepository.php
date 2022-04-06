@@ -15,7 +15,7 @@ use Modules\TaskCalendarCRM\Models\Task;
 
 class TaskRepository extends AbstractRepository implements TaskRepositoryContract
 {
-    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null): Task
+    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null, $taskable = null): Task
     {
         $task = new Task();
         $task->user()->associate($user);
@@ -26,6 +26,9 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
         $task->duration = $duration;
         $task->color = $color;
         $task->checked = false;
+        if($taskable) {
+            $task->taskable()->associate($taskable);
+        }
         $task->save();
 
         return $task;
@@ -113,5 +116,22 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
     public function getModel(): Model
     {
        return new Task();
+    }
+
+    public function checkTaskByTaskable(UserEntity $user, $taskable)
+    {
+        $tasks = $this->newQuery()->whereHasMorph(
+            'taskable',
+            [$taskable::class],
+            function (Builder $query) use ($taskable) {
+                $query->where('taskable_id', $taskable->id);
+            }
+        )->get();
+
+        foreach($tasks as $task) {
+            $task->checked = true;
+            $task->save();
+        }
+
     }
 }

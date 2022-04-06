@@ -22,7 +22,7 @@ interface TaskRepositoryContract extends SearchableRepository
      * @param int $duration
      * @return Task
      */
-    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0 , string $color = null):Task;
+    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0 , string $color = null, $taskable = null):Task;
 
     /**
      * @param Task $task
@@ -76,4 +76,11 @@ interface TaskRepositoryContract extends SearchableRepository
      * @return Task
      */
     public function getTaskById(int $id):Task;
+
+    /**
+     * @param \Modules\BaseCore\Contracts\Entities\UserEntity $user
+     * @param $taskable
+     * @return mixed
+     */
+    public function checkTaskByTaskable(UserEntity $user, $taskable);
 }
