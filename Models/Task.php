@@ -33,6 +33,10 @@ class Task extends Model implements SearchableModel
         'start'
     ];
 
+    protected $casts = [
+        'data' => 'array',
+    ];
+
     /**
      * Get the user that owns the Dates
      *
