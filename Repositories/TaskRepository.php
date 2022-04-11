@@ -15,7 +15,7 @@ use Modules\TaskCalendarCRM\Models\Task;
 
 class TaskRepository extends AbstractRepository implements TaskRepositoryContract
 {
-    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null, $taskable = null): Task
+    public function createTask(UserEntity $user, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null, $taskable = null, array $data = []): Task
     {
         $task = new Task();
         $task->user()->associate($user);
@@ -26,6 +26,7 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
         $task->duration = $duration;
         $task->color = $color;
         $task->checked = false;
+        $task->data = $data;
         if($taskable) {
             $task->taskable()->associate($taskable);
         }
@@ -50,7 +51,7 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
         return $task;
     }
 
-    public function updateTask(Task $task, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null): Task
+    public function updateTask(Task $task, Carbon $start, string $title, string $content = "", string $url = "", int $duration = 0, string $color = null, array $data = []): Task
     {
         $task->start = $start;
         $task->title = $title;
@@ -58,6 +59,7 @@ class TaskRepository extends AbstractRepository implements TaskRepositoryContrac
         $task->url = $url;
         $task->duration = $duration;
         $task->color = $color;
+        $task->data = $data;
         $task->save();
 
         return $task;

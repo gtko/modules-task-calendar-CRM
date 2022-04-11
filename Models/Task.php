@@ -24,6 +24,7 @@ use Modules\BaseCore\Models\User;
  * @property UserEntity $user
  * @property int $user_id
  * @property bool $checked
+ * @property array $data
  * @package App\Models
  */
 class Task extends Model implements SearchableModel
