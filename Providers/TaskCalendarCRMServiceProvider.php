@@ -2,10 +2,13 @@
 
 namespace Modules\TaskCalendarCRM\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\CoreCRM\Flow\Works\WorkflowKernel;
 use Modules\SignatureCRM\Contracts\Repositories\SignatureRepositoryContract;
 use Modules\SignatureCRM\Repositories\SignatureRepository;
 use Modules\TaskCalendarCRM\Contracts\Repositories\TaskRepositoryContract;
+use Modules\TaskCalendarCRM\Flow\Works\Events\EventAddTaskCreate;
 use Modules\TaskCalendarCRM\Repositories\TaskRepository;
 
 class TaskCalendarCRMServiceProvider extends ServiceProvider
@@ -29,10 +32,15 @@ class TaskCalendarCRMServiceProvider extends ServiceProvider
         $this->app->register(RouteServiceProvider::class);
 
         $this->app->bind(TaskRepositoryContract::class, TaskRepository::class);
+
+        app(WorkflowKernel::class)->addEvents([
+           EventAddTaskCreate::class
+        ]);
     }
 
     public function boot() :void
     {
+        Blade::componentNamespace('Modules\TaskCalendarCRM\View\Components', $this->moduleNameLower);
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
     }
