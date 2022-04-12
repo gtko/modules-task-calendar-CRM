@@ -21,9 +21,9 @@
                                 color: "{{$task->color}}",
                             @endif
                             extendedProps: {
-                                @if($task->taskable_type)
-                                    actions: {!! json_encode($task->taskable->actions()) !!}
-                                @endif
+{{--                                @if($task->taskable_type)--}}
+{{--                                    actions: {!! json_encode($task->taskable->actions()) !!}--}}
+{{--                                @endif--}}
                             }
                         },
                         @endforeach
@@ -88,13 +88,6 @@
                                 @this.redirectLink(info.event.id)
                             });
 
-                            let edit = document.createElement("SPAN");
-                            edit.innerText = 'Editer';
-                            edit.className = 'cursor-pointer mr-2 hover:text-blue-200';
-                            edit.addEventListener('click', function (e) {
-                                @this.
-                                redirectTask(info.event.id)
-                            });
 
                             let show = document.createElement("SPAN");
                             show.innerText = 'Voir le lien';
@@ -104,9 +97,9 @@
                                 redirectLink(info.event.id)
                             });
 
-                            let arrayOfDomNodes = [checkbox, text, edit, show];
+                            let arrayOfDomNodes = [checkbox, text, show];
                             if(heure) {
-                                arrayOfDomNodes = [checkbox,heure, text, edit, show];
+                                arrayOfDomNodes = [checkbox,heure, text, show];
                             }
 
                             return {domNodes: arrayOfDomNodes}
