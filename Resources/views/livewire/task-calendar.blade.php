@@ -13,8 +13,15 @@
                     events: [
                         @foreach($tasks as $task)
                         {
+                            @php
+                                $title = $task->title  . ' - ' . $task->content;
+                                if(method_exists($task->taskable, 'client'))
+                                {
+                                    $title .= ' - ' . $task->taskable->client->format_name;
+                                }
+                            @endphp
                             id: "{{$task->id}}",
-                            title: "{!! $task->title !!} - {!! $task->content !!}",
+                            title: "{!! $title !!}",
                             start: "{{$task->start->format('Y-m-d H:i') ?? ''}}",
                             end: "{{$task->end?->format('Y-m-d H:i') ?? ''}}",
                             @if($task->color)
@@ -87,7 +94,6 @@
                             text.addEventListener('click', function (e) {
                                 @this.redirectLink(info.event.id)
                             });
-
 
                             let show = document.createElement("SPAN");
                             show.innerText = 'Voir le lien';
