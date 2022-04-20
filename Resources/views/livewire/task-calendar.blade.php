@@ -15,9 +15,11 @@
                         {
                             @php
                                 $title = $task->title  . ' - ' . $task->content;
-                                if(method_exists($task->taskable, 'client'))
-                                {
-                                    $title .= ' - ' . $task->taskable->client->format_name;
+                                if($task->taskable){
+                                    if(method_exists($task->taskable, 'client'))
+                                    {
+                                        $title .= ' - ' . $task->taskable->client->format_name;
+                                    }
                                 }
                             @endphp
                             id: "{{$task->id}}",
