@@ -20,6 +20,11 @@ class AddTaskCreate extends Attributes
         return new AddTaskCreate(Task::where('id', $value['task'])->first());
     }
 
+    public function getType(): string
+    {
+        return static::TYPE_TASK;
+    }
+
     public function toArray(): array
     {
         return [
