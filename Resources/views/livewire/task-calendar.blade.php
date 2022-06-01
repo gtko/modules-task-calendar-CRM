@@ -87,6 +87,10 @@
                                 heure.addEventListener('click', function (e) {
                                     @this.
                                     redirectLink(info.event.id)
+                                        .then((response) => {
+                                            window.open(response, "_blank");
+                                        })
+
                                 });
                             }
 
@@ -95,6 +99,10 @@
                             text.className = 'cursor-pointer mr-2';
                             text.addEventListener('click', function (e) {
                                 @this.redirectLink(info.event.id)
+                                    .then((response) => {
+                                        window.open(response, "_blank");
+                                    })
+
                             });
 
                             let show = document.createElement("SPAN");
@@ -103,6 +111,10 @@
                             show.addEventListener('click', function (e) {
                                 @this.
                                 redirectLink(info.event.id)
+                                    .then((response) => {
+                                        window.open(response, "_blank");
+                                    })
+
                             });
 
                             let arrayOfDomNodes = [checkbox, text, show];

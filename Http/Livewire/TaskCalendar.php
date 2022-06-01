@@ -40,7 +40,7 @@ class TaskCalendar extends Component
         $taskRep = app(TaskRepositoryContract::class);
         $task = $taskRep->getTaskById($task_id);
         if($task->url){
-            return redirect($task->url);
+            return $task->url;
         }
 
     }
