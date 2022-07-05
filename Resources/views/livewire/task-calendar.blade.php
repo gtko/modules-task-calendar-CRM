@@ -23,7 +23,7 @@
                                 }
                             @endphp
                             id: "{{$task->id}}",
-                            title: "{!! $title !!}",
+                            title: "{!! str_replace('"',"'", $title) !!}",
                             start: "{{$task->start->format('Y-m-d H:i') ?? ''}}",
                             end: "{{$task->end?->format('Y-m-d H:i') ?? ''}}",
                             @if($task->color)
