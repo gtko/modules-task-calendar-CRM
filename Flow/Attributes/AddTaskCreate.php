@@ -5,6 +5,7 @@ namespace Modules\TaskCalendarCRM\Flow\Attributes;
 use Modules\CoreCRM\Contracts\Entities\DevisEntities;
 use Modules\CoreCRM\Flow\Attributes\Attributes;
 use Modules\CoreCRM\Flow\Interfaces\FlowAttributes;
+use Modules\CrmAutoCar\Models\Dossier;
 use Modules\TaskCalendarCRM\Models\Task;
 
 class AddTaskCreate extends Attributes
@@ -39,6 +40,12 @@ class AddTaskCreate extends Attributes
     public function getTask(): Task
     {
         return $this->task;
+    }
+
+
+    public function getDossier()
+    {
+        return $this->task->taskable;
     }
 
 }
